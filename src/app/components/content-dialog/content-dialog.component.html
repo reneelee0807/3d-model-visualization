@@ -1,0 +1,64 @@
+<div id="modal-dialog">
+  <ng-container *ngIf="selectedItem?.type == 'video'; else nonVideoDialog">
+    <video
+      id="video"
+      class="video"
+      crossOrigin="anonymous"
+      playsinline
+      controls
+    >
+      <source
+        [src]="selectedItem.source"
+        type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+      />
+    </video>
+  </ng-container>
+  <ng-template #nonVideoDialog>
+    <section class="content">
+      <ngx-extended-pdf-viewer
+        *ngIf="selectedItem?.type == 'factSheet'"
+        [src]="selectedItem.source"
+        [useBrowserLocale]="true"
+        height="80vh"
+        [showHandToolButton]="true"
+      ></ngx-extended-pdf-viewer>
+      <div *ngIf="selectedItem?.type == 'image'">
+        <i (click)="expandImage()" class="fas fa-expand image-expand-icon"></i>
+        <img [src]="selectedItem.source" />
+      </div>
+    </section>
+  </ng-template>
+  <span
+    type="button"
+    class="close pull-right"
+    aria-label="Close"
+    (click)="modalRef.hide()"
+    data-cy="modal-close-btn"
+  >
+    <span aria-hidden="true">&times;</span>
+  </span>
+</div>
+
+<ng-template #descriptionTemplate let-item="item">
+  <p>
+    {{ item.description }}
+  </p>
+</ng-template>
+
+<div *ngIf="displayFullScreenImage" class="full-size-image-container">
+  <div class="upper-container">
+    <i
+      (click)="compressImage()"
+      class="fas fa-compress image-compress-icon image-size-icon"
+    ></i>
+  </div>
+
+  <!-- <div *ngIf="resource?.media?.length > 1" class="slider-control-container">
+    <i class="fas fa-chevron-left slider-btn" (click)="onGoToPrevImage()"></i>
+    <i class="fas fa-chevron-right slider-btn" (click)="onGoToNextImage()"></i>
+  </div> -->
+
+  <pinch-zoom>
+    <img [src]="selectedItem.source" class="full-size-image" />
+  </pinch-zoom>
+</div>

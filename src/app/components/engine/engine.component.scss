@@ -1,0 +1,31 @@
+:host {
+    position: relative;
+    #renderCanvas {
+      width: calc(100vw - 280px) !important;
+      height: 90vh;
+      touch-action: none;
+    }
+  
+    #renderCanvas:focus {
+      outline: none;
+    }
+  
+    ts-compass {
+      position: absolute;
+      bottom: 127px;
+      right: 90px;
+      transform: rotate(180deg);
+    }
+  
+    .ts-logo {
+      position: absolute;
+      bottom: 80px;
+      right: 30px;
+  
+      img {
+        width: 128px;
+        height: 24px;
+      }
+    }
+  }
+  

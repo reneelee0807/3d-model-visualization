@@ -1,0 +1,126 @@
+<div class="side-menu" [@slideInOut]>
+  <div class="menu-header">
+    <ul class="page-switch">
+      <li
+        *ngFor="let stage of allStages"
+        (click)="selectStage(stage)"
+        class="switch-item"
+      >
+        <div class="switch-item-inner" [class.active]="stage.isActive">
+          {{ stage.label }}
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="content-container">
+    <perfect-scrollbar class="scroll-container">
+      <div class="scroll-content">
+        <div class="menu-list">
+          <div
+            class="menu-item"
+            *ngFor="let item of menuItems; let i = index"
+            [style.--subListColor]="item.menuColor"
+            [style.--hoverColor]="item.hoverColor"
+            [style.--activeColor]="item.color"
+            [class.active]="item.isActive"
+            [class.disabled]="item.disabled"
+            (click)="onClickMenu(item)"
+          >
+            <p class="menu-label">{{ item.label }}</p>
+
+            <span
+              class="eye"
+              (click)="onPanToLocation(item, $event)"
+              *ngIf="item.hasIcon"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-eye"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                [style.stroke]="item.color"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <circle cx="12" cy="12" r="2" />
+                <path
+                  d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </perfect-scrollbar>
+  </div>
+</div>
+
+<!-- <ng-template #listContainer let-mainItem="mainItem" let-isTour="isTour">
+    <div class="list-container">
+      <div class="heading" (click)="mainItem.isActive = !mainItem.isActive">
+        <div class="list-header">
+          <img src="assets/icons/{{ mainItem.icon }}.svg" />
+          {{ mainItem.label }}
+        </div>
+  
+        <span *ngIf="!isTour && mainItem.isActive"
+          ><i class="fas fa-caret-up"></i
+        ></span>
+        <span *ngIf="!isTour && !mainItem.isActive"
+          ><i class="fas fa-caret-down"></i
+        ></span>
+  
+        
+      </div>
+  
+      <div class="list" *ngIf="isTour || mainItem.isActive">
+        <div
+          class="item"
+          *ngFor="let item of mainItem.subMenu; let i = index"
+          [style.--subListColor]="item.menuColor"
+          [style.--hoverColor]="item.hoverColor"
+          [style.--activeColor]="item.color"
+          [class.active]="item.isActive"
+          [class.disabled]="item.disabled"
+          (click)="onClickSubMenu(item)"
+        >
+          <div *ngIf="!isTour">{{ item.label }}</div>
+          <ng-container *ngIf="isTour">
+            <div class="tour-list-item">
+              <div class="location">Location {{ i + 1 }}</div>
+              <div>{{ item.label }}</div>
+            </div>
+            <i class="fas fa-chevron-right pr-2"></i>
+          </ng-container>
+          <span
+            class="eye"
+            (click)="onPanToLocation(item, $event)"
+            *ngIf="item.hasIcon"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-eye"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              [style.stroke]="item.color"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <circle cx="12" cy="12" r="2" />
+              <path
+                d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </ng-template> -->

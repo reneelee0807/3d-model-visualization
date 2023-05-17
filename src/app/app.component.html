@@ -1,0 +1,25 @@
+<div class="bg-dark main-container">
+  <div class="title-container">
+    <h1 class="title">Test App</h1>
+    <span class="sub-title">3D Model Visualization </span>
+  </div>
+  <button
+    class="menu-btn"
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label=" menu"
+  >
+    <i class="fa-solid fa-bars"></i>
+  </button>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="logout()" [disabled]="!isAuth">
+    <i class="fa-solid fa-right-from-bracket"></i>
+    <span>Logout</span>
+  </button>
+</mat-menu>
+
+<div>
+  <router-outlet></router-outlet>
+</div>

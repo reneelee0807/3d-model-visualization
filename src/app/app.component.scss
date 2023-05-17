@@ -1,0 +1,42 @@
+.main-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo {
+  width: 80px;
+  margin-left: auto;
+}
+
+.title {
+  color: #fff;
+  font-weight: 600;
+  margin: 0px 10px;
+}
+
+.sub-title {
+  color: #fff;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.menu-btn {
+  background-color: transparent;
+  border: none;
+  margin-right: 12px;
+}
+
+.fa-bars {
+  color: #fff;
+}
+
+.fa-right-from-bracket {
+  padding-right: 5px;
+  font-size: 14px;
+}

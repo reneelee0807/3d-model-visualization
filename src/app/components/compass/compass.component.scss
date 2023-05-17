@@ -1,0 +1,10 @@
+:host {
+  z-index: 3;
+  position: absolute;
+  svg {
+    transform-origin: center center;
+    transform: rotate(180deg);
+    width: 60px;
+    height: 60px;
+  }
+}

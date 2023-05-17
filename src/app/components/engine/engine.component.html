@@ -1,0 +1,4 @@
+<ts-loader *ngIf="isModelLoading$ | async "></ts-loader>
+<canvas #rendererCanvas id="renderCanvas"></canvas>
+<ts-compass *ngIf="!(isModelLoading$ | async )"></ts-compass>
+
